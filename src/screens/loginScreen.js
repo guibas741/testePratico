@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {View, SafeAreaView, StyleSheet} from 'react-native';
-import {SimpleButton, Title, Input} from '../components';
+import {connect} from 'react-redux';
+import {login} from '../ducks/modules/authDuck';
+import {SimpleButton, Title, Input, Spinner} from '../components';
 import {scale} from '../utils';
 
 class LoginScreen extends Component {
@@ -10,6 +12,19 @@ class LoginScreen extends Component {
       user: '',
       password: '',
     };
+  }
+
+  renderLoginButton() {
+    if (this.props.loading) {
+      return <Spinner />;
+    }
+
+    return (
+      <SimpleButton
+        onPress={() => this.props.login(this.state.user, this.state.password)}>
+        ENTRAR
+      </SimpleButton>
+    );
   }
 
   render() {
@@ -30,9 +45,7 @@ class LoginScreen extends Component {
             value={this.state.password}
           />
         </View>
-        <SimpleButton onPress={() => console.log(this.state)}>
-          ENTRAR
-        </SimpleButton>
+        {this.renderLoginButton()}
       </SafeAreaView>
     );
   }
@@ -49,4 +62,11 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LoginScreen;
+const mapStateToProps = state => ({
+  loading: state.auth.loading,
+});
+
+export default connect(
+  mapStateToProps,
+  {login},
+)(LoginScreen);
