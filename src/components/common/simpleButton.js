@@ -1,16 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {TouchableOpacity, Text, View} from 'react-native';
+import {TouchableOpacity, Text} from 'react-native';
 import {scale} from '../../utils';
 
 const SimpleButton = ({onPress, children, newButtonStyle, newTextStyle}) => {
-  const {buttonStyle, textStyle, viewStyle} = styles;
+  const {buttonStyle, textStyle} = styles;
 
   return (
     <TouchableOpacity onPress={onPress} style={[buttonStyle, newButtonStyle]}>
-      <View style={viewStyle}>
-        <Text style={[textStyle, newTextStyle]}>{children}</Text>
-      </View>
+      <Text style={[textStyle, newTextStyle]}>{children}</Text>
     </TouchableOpacity>
   );
 };
@@ -26,13 +24,10 @@ const styles = {
   buttonStyle: {
     backgroundColor: '#0080FF',
     borderRadius: 10,
-    margin: scale(5),
-  },
-  viewStyle: {
-    flexDirection: 'row',
+    padding: scale(10),
     alignItem: 'center',
     justifyContent: 'center',
-    padding: scale(10),
+    flexDirection: 'row',
   },
   textStyle: {
     color: '#FFF',
