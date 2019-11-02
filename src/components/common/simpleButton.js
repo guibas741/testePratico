@@ -36,6 +36,8 @@ const styles = {
   },
   textStyle: {
     color: '#FFF',
+    fontFamily: 'sans-serif',
+    fontWeight: 'bold',
     fontSize: scale(14),
   },
 };
