@@ -15,12 +15,15 @@ class LoginScreen extends Component {
   }
 
   renderLoginButton() {
+    const {user, password} = this.state;
+
     if (this.props.loading) {
       return <Spinner />;
     }
 
     return (
-      <SimpleButton onPress={() => this.props.navigation.navigate('Home')}>
+      <SimpleButton
+        onPress={() => this.props.login(user, password, this.props.navigation)}>
         ENTRAR
       </SimpleButton>
     );

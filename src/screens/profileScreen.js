@@ -14,7 +14,7 @@ class ProfileScreen extends Component {
     return (
       <SafeAreaView>
         <Title text="Usuário" />
-        <Text>{this.props.email}</Text>
+        <Text>{this.props.user}</Text>
         <SimpleButton onPress={() => this.props.logout(this.props.navigation)}>Sair</SimpleButton>
       </SafeAreaView>
     );
@@ -22,7 +22,7 @@ class ProfileScreen extends Component {
 }
 
 const mapStateToProps = state => ({
-  email: state.auth.email,
+  user: state.auth.user,
 });
 
 export default connect(

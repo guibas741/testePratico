@@ -8,7 +8,7 @@ const Types = {
 
 const INITIAL_STATE = {
   loading: false,
-  email: '',
+  user: '',
 };
 
 export default function reducer(state = INITIAL_STATE, action) {
@@ -16,7 +16,7 @@ export default function reducer(state = INITIAL_STATE, action) {
     case Types.LOGIN:
       return {...state, loading: true};
     case Types.LOGIN_SUCCESS:
-      return {...state, loading: false, email: action.payload.email};
+      return {...state, loading: false, user: action.payload.user};
     case Types.LOGOUT:
       return {...state, email: '', loading: false};
     default:
@@ -24,13 +24,13 @@ export default function reducer(state = INITIAL_STATE, action) {
   }
 }
 
-export function login(email, password) {
-  console.log({email, password});
+export function login(user, password, navigation) {
   return dispatch => {
     dispatch({type: Types.LOGIN});
 
     setTimeout(function() {
-      dispatch({type: Types.LOGIN_SUCCESS, payload: {email}});
+      dispatch({type: Types.LOGIN_SUCCESS, payload: {user}});
+      navigation.navigate('Home');
     }, 3000);
   };
 }
@@ -44,5 +44,5 @@ export function logout(navigation) {
         actions: [NavigationActions.navigate({routeName: 'Login'})],
       }),
     );
-  };;
+  };
 }
