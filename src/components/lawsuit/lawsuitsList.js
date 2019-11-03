@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import {LawsuitModal} from './lawsuitModal';
 
 const LawsuitsList = props => {
-  const [modalVisible, toggleModal] = useState('false');
+  const [modalVisible, toggleModal] = useState(false);
   const [selectedLawsuit, setLawsuitItem] = useState({});
   return (
     <View>
@@ -15,7 +15,10 @@ const LawsuitsList = props => {
         visible={modalVisible}
         onRequestClose={() => toggleModal(false)}>
         <SafeAreaView>
-          <LawsuitModal lawsuitItem={selectedLawsuit} />
+          <LawsuitModal
+            lawsuitItem={selectedLawsuit}
+            onRequestClose={() => toggleModal(false)}
+          />
         </SafeAreaView>
       </Modal>
 
