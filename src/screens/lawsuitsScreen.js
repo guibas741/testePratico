@@ -1,11 +1,32 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {SafeAreaView, Text} from 'react-native';
-import {Icon} from 'native-base';
+import {connect} from 'react-redux';
+import {getAllLawsuits} from '../ducks/modules/lawsuitsDuck';
 
-const LawsuitsScreen = () => (
-  <SafeAreaView>
-    <Text>PROCESSOS</Text>
-  </SafeAreaView>
-);
+class LawsuitsScreen extends Component {
+  constructor(props) {
+    super(props);
+    this.props.getAllLawsuits();
+  }
 
-export default LawsuitsScreen;
+  render() {
+    return (
+      <SafeAreaView>
+        <Text>PROCESSOS</Text>
+      </SafeAreaView>
+    );
+  }
+}
+
+const mapStateToProps = state => ({
+  lawsuitsItems: state.lawsuit.lawsuitsItems,
+  loading: state.lawsuit.loading,
+  error: state.lawsuit.error,
+});
+
+export default connect(
+  mapStateToProps,
+  {
+    getAllLawsuits,
+  },
+)(LawsuitsScreen);

@@ -49,4 +49,4 @@ const resetNavigationStack = (navigation, routeName) => {
       actions: [NavigationActions.navigate({routeName})],
     }),
   );
-};;
+};
