@@ -13,7 +13,14 @@ const LawsuitHistoryItem = props => (
         <Text style={styles.yearTextStyle}>1995</Text>
       </View>
     </View>
-    <Text style={styles.descriptionStyle}>{props.historyItem.description}</Text>
+    <View style={styles.headerContainerStyle}>
+      <View style={styles.lineSeparatorStyle} />
+      <View style={{flex: 1}}>
+        <Text style={styles.descriptionStyle}>
+          {props.historyItem.description}
+        </Text>
+      </View>
+    </View>
   </View>
 );
 
@@ -50,6 +57,14 @@ const styles = StyleSheet.create({
     fontFamily: 'sans-serif',
     fontSize: scale(14),
     color: '#4D4E4F',
+  },
+  lineSeparatorStyle: {
+    borderLeftWidth: 2,
+    borderColor: '#d3d3d3',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: scale(10),
+    margin: scale(10),
   },
 });
 
