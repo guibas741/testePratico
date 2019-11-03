@@ -1,14 +1,15 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
-import LawsuitsScreen from './lawsuitsScreen';
 import {Icon} from 'native-base';
 import {scale} from '../utils';
+import LawsuitsScreen from './lawsuitsScreen';
+import profileScreen from './profileScreen';
 
 const HomeScreen = createBottomTabNavigator(
   {
     Processos: LawsuitsScreen,
-    Perfil: LawsuitsScreen,
+    Perfil: profileScreen,
   },
   {
     navigationOptions: ({navigation}) => ({
@@ -22,7 +23,7 @@ const HomeScreen = createBottomTabNavigator(
         return (
           <Icon
             type="FontAwesome"
-            name={iconName}
+            name="folder-o"
             style={{
               paddingBottom: 0,
               paddingTop: scale(10),
@@ -47,7 +48,6 @@ const HomeScreen = createBottomTabNavigator(
         fontWeight: 'bold',
         paddingBottom: scale(10),
       },
-      //labelPosition: 'beside-icon',
     },
   },
 );
