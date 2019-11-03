@@ -30,7 +30,7 @@ export function login(user, password, navigation) {
 
     setTimeout(function() {
       dispatch({type: Types.LOGIN_SUCCESS, payload: {user}});
-      navigation.navigate('Home');
+      resetNavigationStack(navigation, 'Home');
     }, 3000);
   };
 }
@@ -38,11 +38,15 @@ export function login(user, password, navigation) {
 export function logout(navigation) {
   return dispatch => {
     dispatch({type: Types.LOGOUT});
-    navigation.dispatch(
-      StackActions.reset({
-        index: 0,
-        actions: [NavigationActions.navigate({routeName: 'Login'})],
-      }),
-    );
+    resetNavigationStack(navigation, 'Login');
   };
 }
+
+const resetNavigationStack = (navigation, routeName) => {
+  navigation.dispatch(
+    StackActions.reset({
+      index: 0,
+      actions: [NavigationActions.navigate({routeName})],
+    }),
+  );
+};;
