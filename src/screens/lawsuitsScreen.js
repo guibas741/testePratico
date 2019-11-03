@@ -1,12 +1,11 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {SafeAreaView, Text} from 'react-native';
 import {Icon} from 'native-base';
 
 const LawsuitsScreen = () => (
-  <View>
+  <SafeAreaView>
     <Text>PROCESSOS</Text>
-    <Icon type="FontAwesome" name="dashboard" />
-  </View>
+  </SafeAreaView>
 );
 
 export default LawsuitsScreen;
