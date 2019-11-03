@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
 import LawsuitsScreen from './lawsuitsScreen';
@@ -13,13 +14,9 @@ const HomeScreen = createBottomTabNavigator(
     navigationOptions: ({navigation}) => ({
       tabBarIcon: ({focused}) => {
         const {routeName} = navigation.state;
-        let iconName;
-        if (routeName === 'Vendas') {
-          iconName = 'money';
-        } else if (routeName === 'Comissão') {
-          iconName = 'percent';
-        } else {
-          iconName = `user-circle${focused ? '' : '-o'}`;
+        let iconName = `user-circle${focused ? '' : '-o'}`;
+        if (routeName === 'Processos') {
+          iconName = 'folder-o';
         }
 
         return (
@@ -29,7 +26,7 @@ const HomeScreen = createBottomTabNavigator(
             style={{
               paddingBottom: 0,
               paddingTop: scale(10),
-              color: focused ? '#FFF' : '#FCA700',
+              color: focused ? '#FFF' : '#0080FF',
               fontSize: scale(20),
             }}
           />
@@ -37,17 +34,20 @@ const HomeScreen = createBottomTabNavigator(
       },
     }),
     tabBarOptions: {
-      activeTintColor: '#FFF',
+      activeTintColor: '#0080FF',
       inactiveTintColor: '#FFF',
-      activeBackgroundColor: '#FCA700',
+      activeBackgroundColor: '#484848',
       style: {
         backgroundColor: '#484848',
         height: scale(56),
       },
       labelStyle: {
         fontSize: scale(16),
+        fontFamily: 'sans-serif',
+        fontWeight: 'bold',
         paddingBottom: scale(10),
       },
+      //labelPosition: 'beside-icon',
     },
   },
 );

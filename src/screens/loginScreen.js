@@ -20,8 +20,7 @@ class LoginScreen extends Component {
     }
 
     return (
-      <SimpleButton
-        onPress={() => this.props.login(this.state.user, this.state.password)}>
+      <SimpleButton onPress={() => this.props.navigation.navigate('Home')}>
         ENTRAR
       </SimpleButton>
     );
@@ -45,6 +44,7 @@ class LoginScreen extends Component {
             value={this.state.password}
           />
         </View>
+
         {this.renderLoginButton()}
       </SafeAreaView>
     );
