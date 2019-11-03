@@ -7,10 +7,13 @@ import {
   StyleSheet,
 } from 'react-native';
 import {Icon} from 'native-base';
-import {HeaderWithIcon} from '../common/headerWithIcon';
+import {
+  HeaderWithIcon,
+  LawsuitModalBody,
+  LawsuitHistory,
+} from '../../components';
 import {scale} from '../../utils';
 import PropTypes from 'prop-types';
-import {LawsuitModalBody} from './lawsuitModalBody';
 
 const LawsuitModal = props => {
   console.log(props);
@@ -25,8 +28,10 @@ const LawsuitModal = props => {
           <HeaderWithIcon text="Processo" iconName="paperclip" />
         </View>
       </View>
-      <Text>{props.lawsuitItem.title}</Text>
-      <LawsuitModalBody lawsuitItem={props.lawsuitItem} />
+      <View style={{padding: scale(10)}}>
+        <LawsuitModalBody lawsuitItem={props.lawsuitItem} />
+        <LawsuitHistory lawsuitHistoricals={props.lawsuitItem.historicals} />
+      </View>
     </ScrollView>
   );
 };

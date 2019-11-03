@@ -2,11 +2,12 @@ import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {LabelWithText, SimpleButton} from '../../components';
 import {scale} from '../../utils';
+import PropTypes from 'prop-types';
 
 const LawsuitModalBody = props => {
   return (
     <View>
-      <Text>{props.name}</Text>
+      <Text style={styles.titleStyle}>{props.lawsuitItem.title}</Text>
       <LabelWithText label="Número" text={props.lawsuitItem.number} />
       <LabelWithText
         label="Cliente"
@@ -30,6 +31,16 @@ const styles = StyleSheet.create({
     fontSize: scale(12),
     color: '#d3d3d3',
   },
+  titleStyle: {
+    fontFamily: 'sans-serif',
+    fontWeight: 'bold',
+    fontSize: scale(18),
+    color: '#4D4E4F',
+  },
 });
+
+LawsuitModalBody.propTypes = {
+  lawsuitItem: PropTypes.object.isRequired,
+};
 
 export {LawsuitModalBody};

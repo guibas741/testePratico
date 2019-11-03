@@ -8,3 +8,5 @@ export * from './lawsuit/lawsuitsList';
 export * from './lawsuit/lawsuitItem';
 export * from './lawsuit/lawsuitModal';
 export * from './lawsuit/lawsuitModalBody';
+export * from './lawsuit/lawsuitHistory';
+export * from './lawsuit/lawsuitHistoryItem';
