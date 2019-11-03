@@ -21,7 +21,11 @@ const LawsuitModal = props => {
     <ScrollView>
       <View style={styles.headerContainerStyle}>
         <TouchableOpacity onPress={() => props.onRequestClose()}>
-          <Icon type="FontAwesome" name="arrow-left" style={styles.iconStyle} />
+          <Icon
+            type="MaterialIcons"
+            name="arrow-back"
+            style={styles.iconStyle}
+          />
         </TouchableOpacity>
 
         <View style={styles.titleContainerStyle}>

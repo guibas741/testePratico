@@ -1,10 +1,14 @@
-import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import React, {useState} from 'react';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {Icon} from 'native-base';
 import {LabelWithText, SimpleButton} from '../../components';
-import {scale} from '../../utils';
+import {scale, pickDocument} from '../../utils';
 import PropTypes from 'prop-types';
 
 const LawsuitModalBody = props => {
+  const [fileUri, setFileUri] = useState('');
+  const [fileName, setFileName] = useState('Anexo');
+
   return (
     <View>
       <Text style={styles.titleStyle}>{props.lawsuitItem.title}</Text>
@@ -19,8 +23,24 @@ const LawsuitModalBody = props => {
       />
       <LabelWithText label="Fórum" text={props.lawsuitItem.court} />
       <LabelWithText label="Valor" text={`R$ ${props.lawsuitItem.amount}`} />
+
       <Text style={styles.labelStyle}>Anexo</Text>
-      <SimpleButton onPress={() => console.log('aa')}>Anexo</SimpleButton>
+      <View style={styles.attachmentContainerStyle}>
+        <SimpleButton onPress={() => pickDocument(setFileUri, setFileName)}>
+          {fileName}
+        </SimpleButton>
+        <TouchableOpacity
+          onPress={() => {
+            setFileName('');
+            setFileName('Anexo');
+          }}>
+          <Icon
+            type="MaterialIcons"
+            name="close"
+            style={styles.closeIconStyle}
+          />
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -36,6 +56,15 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: scale(18),
     color: '#4D4E4F',
+  },
+  closeIconStyle: {
+    flex: 1,
+    padding: scale(10),
+    color: '#4D4E4F',
+  },
+  attachmentContainerStyle: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 });
 
