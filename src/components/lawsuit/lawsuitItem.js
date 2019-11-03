@@ -2,14 +2,14 @@ import React from 'react';
 import {TouchableOpacity, Text, StyleSheet} from 'react-native';
 import {scale} from '../../utils';
 import PropTypes from 'prop-types';
+import {LabelWithText} from '../common/labelWithText';
 
 const LawsuitItem = props => (
   <TouchableOpacity
     style={styles.containerStyle}
     onPress={() => props.openModal()}>
     <Text style={styles.titleStyle}>{props.lawsuitItem.title}</Text>
-    <Text style={styles.numberLabelStyle}>Número</Text>
-    <Text style={styles.numberStyle}>{props.lawsuitItem.number}</Text>
+    <LabelWithText label="Número" text={props.lawsuitItem.number} />
   </TouchableOpacity>
 );
 
@@ -22,16 +22,6 @@ const styles = StyleSheet.create({
     fontFamily: 'sans-serif',
     fontWeight: 'bold',
     fontSize: scale(18),
-    color: '#4D4E4F',
-  },
-  numberLabelStyle: {
-    fontFamily: 'sans-serif',
-    fontSize: scale(12),
-    color: '#d3d3d3',
-  },
-  numberStyle: {
-    fontFamily: 'sans-serif',
-    fontSize: scale(14),
     color: '#4D4E4F',
   },
 });
