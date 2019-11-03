@@ -1,5 +1,6 @@
 import React from 'react';
 import {FlatList, View, Text} from 'react-native';
+import {LawsuitItem} from './lawsuitItem';
 
 const LawsuitsList = props => {
   console.log(props.lawsuitsCases);
@@ -7,11 +8,7 @@ const LawsuitsList = props => {
     <View>
       <FlatList
         data={props.lawsuitsCases}
-        renderItem={({item}) => (
-          <View>
-            <Text>{item.title}</Text>
-          </View>
-        )}
+        renderItem={({item}) => <LawsuitItem lawsuitItem={item} />}
         keyExtractor={(item, index) => index.toString()}
       />
     </View>
