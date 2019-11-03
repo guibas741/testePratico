@@ -8,7 +8,7 @@ const Types = {
 
 const INITIAL_STATE = {
   loading: false,
-  lawsuitsItems: [],
+  lawsuitsCases: [],
 };
 
 export default function reducer(state = INITIAL_STATE, action) {
@@ -20,7 +20,7 @@ export default function reducer(state = INITIAL_STATE, action) {
         ...state,
         loading: false,
         error: '',
-        lawsuitsItems: action.payload.lawsuitsItems,
+        lawsuitsCases: action.payload.lawsuitsCases,
       };
     case Types.GET_LAWSUITS_FAIL:
       return {...state, loading: false, error: action.payload.error};
@@ -36,9 +36,8 @@ export function getAllLawsuits() {
     api
       .get('/lawsuit/all', {headers})
       .then(response => {
-        console.log({response});
-        const lawsuitsItems = response.data;
-        dispatch({type: Types.GET_LAWSUITS_SUCCESS, payload: {lawsuitsItems}});
+        const lawsuitsCases = response.data.cases;
+        dispatch({type: Types.GET_LAWSUITS_SUCCESS, payload: {lawsuitsCases}});
       })
       .catch(error => {
         dispatch({type: Types.GET_LAWSUITS_FAIL, payload: {error}});
