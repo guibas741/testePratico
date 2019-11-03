@@ -13,7 +13,7 @@ const LawsuitItem = props => (
 const styles = StyleSheet.create({
   containerStyle: {
     padding: scale(5),
-    margin: scale(5),
+    margin: scale(10),
   },
   titleStyle: {
     fontFamily: 'sans-serif',

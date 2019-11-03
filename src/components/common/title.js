@@ -14,6 +14,7 @@ const styles = StyleSheet.create({
     fontFamily: 'sans-serif',
     fontSize: scale(30),
     fontWeight: 'bold',
+    color: '#4D4E4F',
   },
 });
 
