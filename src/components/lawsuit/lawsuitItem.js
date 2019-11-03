@@ -1,14 +1,16 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {TouchableOpacity, Text, StyleSheet} from 'react-native';
 import {scale} from '../../utils';
 import PropTypes from 'prop-types';
 
 const LawsuitItem = props => (
-  <View style={styles.containerStyle}>
+  <TouchableOpacity
+    style={styles.containerStyle}
+    onPress={() => props.openModal()}>
     <Text style={styles.titleStyle}>{props.lawsuitItem.title}</Text>
     <Text style={styles.numberLabelStyle}>Número</Text>
     <Text style={styles.numberStyle}>{props.lawsuitItem.number}</Text>
-  </View>
+  </TouchableOpacity>
 );
 
 const styles = StyleSheet.create({
