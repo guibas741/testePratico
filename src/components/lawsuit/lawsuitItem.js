@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {scale} from '../../utils';
+import PropTypes from 'prop-types';
 
 const LawsuitItem = props => (
   <View style={styles.containerStyle}>
@@ -32,5 +33,9 @@ const styles = StyleSheet.create({
     color: '#4D4E4F',
   },
 });
+
+LawsuitItem.propTypes = {
+  lawsuitItem: PropTypes.object.isRequired,
+};
 
 export {LawsuitItem};

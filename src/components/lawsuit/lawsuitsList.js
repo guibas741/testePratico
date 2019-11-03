@@ -1,6 +1,7 @@
 import React from 'react';
 import {FlatList, View, Text} from 'react-native';
 import {LawsuitItem} from './lawsuitItem';
+import PropTypes from 'prop-types';
 
 const LawsuitsList = props => {
   console.log(props.lawsuitsCases);
@@ -13,6 +14,10 @@ const LawsuitsList = props => {
       />
     </View>
   );
+};
+
+LawsuitsList.propTypes = {
+  lawsuitsCases: PropTypes.array,
 };
 
 export {LawsuitsList};
