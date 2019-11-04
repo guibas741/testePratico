@@ -29,7 +29,11 @@ const LawsuitModal = props => {
         </TouchableOpacity>
 
         <View style={styles.titleContainerStyle}>
-          <HeaderWithIcon text="Processo" iconName="paperclip" />
+          <HeaderWithIcon
+            text="Processo"
+            iconName="paperclip"
+            iconFunction={() => console.log('')}
+          />
         </View>
       </View>
       <View style={{padding: scale(10)}}>

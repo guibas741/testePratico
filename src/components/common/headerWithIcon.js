@@ -16,6 +16,7 @@ const HeaderWithIcon = ({text, iconName, iconFunction}) => (
 HeaderWithIcon.propTypes = {
   iconName: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
+  iconFunction: PropTypes.func,
 };
 
 const styles = StyleSheet.create({
