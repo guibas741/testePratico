@@ -3,7 +3,7 @@ import {SafeAreaView, StyleSheet, View, TouchableOpacity} from 'react-native';
 import {Icon} from 'native-base';
 import {connect} from 'react-redux';
 import {HeaderWithIcon, LawsuitsList, Spinner, Input} from '../components';
-import {getAllLawsuits} from '../ducks/modules/lawsuitsDuck';
+import {getAllLawsuits, filterLawsuits} from '../ducks/modules/lawsuitsDuck';
 import {scale} from '../utils';
 
 class LawsuitsScreen extends Component {
@@ -40,7 +40,16 @@ class LawsuitsScreen extends Component {
               value={this.state.searchQuery}
             />
           </View>
-          <TouchableOpacity onPress={() => this.filter()}>
+          <TouchableOpacity
+            onPress={() => this.props.filterLawsuits(this.state.searchQuery)}>
+            <Icon
+              type="MaterialIcons"
+              name="search"
+              style={styles.closeIconStyle}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => this.setState({showSearchBar: false})}>
             <Icon
               type="MaterialIcons"
               name="close"
@@ -99,5 +108,6 @@ export default connect(
   mapStateToProps,
   {
     getAllLawsuits,
+    filterLawsuits,
   },
 )(LawsuitsScreen);

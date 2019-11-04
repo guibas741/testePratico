@@ -4,11 +4,14 @@ const Types = {
   GET_LAWSUITS: 'lawsuits/GET_LAWSUITS',
   GET_LAWSUITS_SUCCESS: 'lawsuits/GET_LAWSUITS_SUCCESS',
   GET_LAWSUITS_FAIL: 'lawsuits/GET_LAWSUITS_FAIL',
+  FILTER_LAWSUITS: 'lawsuits/FILTER_LAWSUITS',
 };
 
 const INITIAL_STATE = {
   loading: false,
+  error: '',
   lawsuitsCases: [],
+  lawsuitsCasesFull: [],
 };
 
 export default function reducer(state = INITIAL_STATE, action) {
@@ -20,10 +23,16 @@ export default function reducer(state = INITIAL_STATE, action) {
         ...state,
         loading: false,
         error: '',
+        lawsuitsCasesFull: action.payload.lawsuitsCases,
         lawsuitsCases: action.payload.lawsuitsCases,
       };
     case Types.GET_LAWSUITS_FAIL:
       return {...state, loading: false, error: action.payload.error};
+    case Types.FILTER_LAWSUITS:
+      return {
+        ...state,
+        lawsuitsCases: action.payload.lawsuitsCases,
+      };
     default:
       return state;
   }
@@ -42,5 +51,18 @@ export function getAllLawsuits() {
       .catch(error => {
         dispatch({type: Types.GET_LAWSUITS_FAIL, payload: {error}});
       });
+  };
+}
+
+export function filterLawsuits(query) {
+  return (dispatch, getState) => {
+    const {lawsuitsCasesFull} = getState().lawsuit;
+    console.log({lawsuitsCasesFull});
+    const lawsuitsCases = lawsuitsCasesFull.filter(
+      data =>
+        data.title.toLowerCase().includes(query) || data.number.includes(query),
+    );
+    console.log({lawsuitsCases});
+    dispatch({type: Types.FILTER_LAWSUITS, payload: {lawsuitsCases}});
   };
 }
