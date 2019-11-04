@@ -16,7 +16,6 @@ import {scale} from '../../utils';
 import PropTypes from 'prop-types';
 
 const LawsuitModal = props => {
-  console.log(props);
   return (
     <ScrollView>
       <View style={styles.headerContainerStyle}>

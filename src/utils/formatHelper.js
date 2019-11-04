@@ -7,7 +7,6 @@ const formatValue = value => {
 };
 
 const convertMonthNumberToStr = month => {
-  console.log({month});
   const numberToMonth = [
     'Janeiro',
     'Fevereiro',

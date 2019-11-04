@@ -10,3 +10,4 @@ export * from './lawsuit/lawsuitModal';
 export * from './lawsuit/lawsuitModalBody';
 export * from './lawsuit/lawsuitHistory';
 export * from './lawsuit/lawsuitHistoryItem';
+export * from './lawsuit/lawsuitHistoryHeader';
