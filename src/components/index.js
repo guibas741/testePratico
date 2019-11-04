@@ -11,3 +11,4 @@ export * from './lawsuit/lawsuitModalBody';
 export * from './lawsuit/lawsuitHistory';
 export * from './lawsuit/lawsuitHistoryItem';
 export * from './lawsuit/lawsuitHistoryHeader';
+export * from './lawsuit/attachmentComponent';
