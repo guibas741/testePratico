@@ -57,12 +57,10 @@ export function getAllLawsuits() {
 export function filterLawsuits(query) {
   return (dispatch, getState) => {
     const {lawsuitsCasesFull} = getState().lawsuit;
-    console.log({lawsuitsCasesFull});
     const lawsuitsCases = lawsuitsCasesFull.filter(
       data =>
         data.title.toLowerCase().includes(query) || data.number.includes(query),
     );
-    console.log({lawsuitsCases});
     dispatch({type: Types.FILTER_LAWSUITS, payload: {lawsuitsCases}});
   };
 }
