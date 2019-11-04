@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {Icon} from 'native-base';
 import {LabelWithText, SimpleButton} from '../../components';
-import {scale, pickDocument} from '../../utils';
+import {scale, pickDocument, formatValue} from '../../utils';
 import PropTypes from 'prop-types';
 
 const LawsuitModalBody = props => {
@@ -22,7 +22,10 @@ const LawsuitModalBody = props => {
         text={props.lawsuitItem.customers[0].roleName}
       />
       <LabelWithText label="Fórum" text={props.lawsuitItem.court} />
-      <LabelWithText label="Valor" text={`R$ ${props.lawsuitItem.amount}`} />
+      <LabelWithText
+        label="Valor"
+        text={`R$ ${formatValue(props.lawsuitItem.amount)}`}
+      />
 
       <Text style={styles.labelStyle}>Anexo</Text>
       <View style={styles.attachmentContainerStyle}>
