@@ -15,6 +15,7 @@ Abaixo segue o que foi utilizado no desenvolvimento deste projeto:
 - [React Redux](https://github.com/reduxjs/react-redux) - Biblioteca para controle de estado;
 - [React Native Document Picker](https://github.com/Elyx0/react-native-document-picker) - Biblioteca para selecionar arquivos em aplicações React Native;
 - [Native Base](https://github.com/GeekyAnts/NativeBase) - Biblioteca de componentes estilizados;
+- [Jest](https://github.com/facebook/jest) - Framework para testes em Javascript;
 <!-- GETTING STARTED -->
 
 ### Estrutura de Arquivos
