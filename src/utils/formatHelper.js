@@ -6,4 +6,23 @@ const formatValue = value => {
   return value.toLocaleString('pt-BR');
 };
 
-export {formatValue};
+const convertMonthNumberToStr = month => {
+  console.log({month});
+  const numberToMonth = [
+    'Janeiro',
+    'Fevereiro',
+    'Março',
+    'Abril',
+    'Maio',
+    'Junho',
+    'Julho',
+    'Agosto',
+    'Setembro',
+    'Outubro',
+    'Novembro',
+    'Dezembro',
+  ];
+  return numberToMonth[month];
+};
+
+export {formatValue, convertMonthNumberToStr};

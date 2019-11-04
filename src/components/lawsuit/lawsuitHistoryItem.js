@@ -1,28 +1,36 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
-import {scale} from '../../utils';
+import {scale, convertMonthNumberToStr} from '../../utils';
 
-const LawsuitHistoryItem = props => (
-  <View style={{padding: scale(5)}}>
-    <View style={styles.headerContainerStyle}>
-      <View style={styles.dayContainerStyle}>
-        <Text style={styles.dayTextStyle}>13</Text>
+const LawsuitHistoryItem = props => {
+  const historyDateFormat = new Date(props.historyItem.date);
+
+  return (
+    <View style={{padding: scale(5)}}>
+      <View style={styles.headerContainerStyle}>
+        <View style={styles.dayContainerStyle}>
+          <Text style={styles.dayTextStyle}>{historyDateFormat.getDate()}</Text>
+        </View>
+        <View style={{flex: 1}}>
+          <Text style={styles.monthTextStyle}>
+            {convertMonthNumberToStr(historyDateFormat.getMonth())}
+          </Text>
+          <Text style={styles.yearTextStyle}>
+            {historyDateFormat.getFullYear()}
+          </Text>
+        </View>
       </View>
-      <View style={{flex: 1}}>
-        <Text style={styles.monthTextStyle}>Agosto</Text>
-        <Text style={styles.yearTextStyle}>1995</Text>
+      <View style={styles.headerContainerStyle}>
+        <View style={styles.lineSeparatorStyle} />
+        <View style={{flex: 1}}>
+          <Text style={styles.descriptionStyle}>
+            {props.historyItem.description}
+          </Text>
+        </View>
       </View>
     </View>
-    <View style={styles.headerContainerStyle}>
-      <View style={styles.lineSeparatorStyle} />
-      <View style={{flex: 1}}>
-        <Text style={styles.descriptionStyle}>
-          {props.historyItem.description}
-        </Text>
-      </View>
-    </View>
-  </View>
-);
+  );
+};
 
 const styles = StyleSheet.create({
   headerContainerStyle: {
