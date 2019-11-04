@@ -49,7 +49,10 @@ class LawsuitsScreen extends Component {
             />
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => this.setState({showSearchBar: false})}>
+            onPress={() => {
+              this.props.filterLawsuits('');
+              this.setState({showSearchBar: false, searchQuery: ''});
+            }}>
             <Icon
               type="MaterialIcons"
               name="close"
