@@ -1,13 +1,19 @@
 import React, {Component} from 'react';
-import {SafeAreaView, StyleSheet, View} from 'react-native';
+import {SafeAreaView, StyleSheet, View, TouchableOpacity} from 'react-native';
+import {Icon} from 'native-base';
 import {connect} from 'react-redux';
-import {HeaderWithIcon, LawsuitsList, Spinner} from '../components';
+import {HeaderWithIcon, LawsuitsList, Spinner, Input} from '../components';
 import {getAllLawsuits} from '../ducks/modules/lawsuitsDuck';
 import {scale} from '../utils';
 
 class LawsuitsScreen extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      showSearchBar: false,
+      searchQuery: '',
+    };
+
     this.props.getAllLawsuits();
   }
 
@@ -23,10 +29,41 @@ class LawsuitsScreen extends Component {
     return <LawsuitsList lawsuitsCases={this.props.lawsuitsCases} />;
   }
 
+  renderSearchBar() {
+    if (this.state.showSearchBar) {
+      return (
+        <View style={styles.searchContainerStyle}>
+          <View style={{flex: 1}}>
+            <Input
+              placeholder="Pesquisar.."
+              onChangeText={value => this.setState({searchQuery: value})}
+              value={this.state.searchQuery}
+            />
+          </View>
+          <TouchableOpacity onPress={() => this.filter()}>
+            <Icon
+              type="MaterialIcons"
+              name="close"
+              style={styles.closeIconStyle}
+            />
+          </TouchableOpacity>
+        </View>
+      );
+    }
+
+    return (
+      <HeaderWithIcon
+        text="Processos"
+        iconName="search"
+        iconFunction={() => this.setState({showSearchBar: true})}
+      />
+    );
+  }
+
   render() {
     return (
       <SafeAreaView style={styles.containerStyle}>
-        <HeaderWithIcon text="Processos" iconName="search" />
+        {this.renderSearchBar()}
         {this.renderList()}
       </SafeAreaView>
     );
@@ -41,6 +78,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: scale(30),
+  },
+  closeIconStyle: {
+    padding: scale(10),
+    color: '#4D4E4F',
+  },
+  searchContainerStyle: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 });
 
